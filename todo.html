@@ -1,0 +1,54 @@
+<div style="background-color:black">
+<script>
+    function addtodo() {
+        let a = document.getElementById("title").value;
+        let b = document.getElementById("desc").value;
+        console.log(a);
+        console.log(b);
+
+        document.getElementById("container").innerHTML +=
+        `
+            <div style="padding:20px; margin:20px; text-align: start;">
+                <div style="padding:5px; margin:20px; font-size:20 ;text-align: start;background-color:teal;color:white;border-radius:5px">${a}</div>
+                <div style="padding:5px; margin:20px; font-size:20;text-align: start;background-color:teal;color:white;border-radius:5px">${b}</div>
+                <button style="font-size: 20px; background-color: blue; color: darkkhaki; border-radius: 10px; padding:10px; margin:20px;" type="button" onclick="markAsDone(this)">Mark As Done</button>
+                <button style="font-size: 20px; background-color: blue; color: darkkhaki; border-radius: 10px; padding:10px; margin:20px;" type="button" onclick="remove(this)">Remove To-Do</button>
+            </div>
+        `;
+    }
+
+    function markAsDone(button) {
+        let todoDiv = button.parentElement;
+        if (button.innerHTML === "Mark As Done") {
+            todoDiv.style.textDecoration = "line-through";
+            todoDiv.style.color = "red";
+            button.innerHTML = "Unmark As Done";
+        } else {
+            todoDiv.style.textDecoration = "none";
+            todoDiv.style.color = "black";
+            button.innerHTML = "Mark As Done";
+        }
+    }
+    function remove(button){
+        let div=button.parentElement;
+        if(button.innerHTML==="Remove To-Do"){
+            div.parentElement.removeChild(div);
+        }
+    }
+
+</script>
+<div>
+
+    <div style="color:palevioletred; text-align: center;"><h1>WELCOME!!!</h1></div>
+    <div style="color:palevioletred; text-align: center;"><h2>Add Your To-Do's Here...</h2></div>
+</div>
+<div style="padding:20px; margin:20px; text-align: start; font-size: 50px; background-color:black; color: white;">
+    <input style="font-size: 30px; padding:20px; margin:20px; border-radius:5px;" id="title" type="text" placeholder="To-Do title"><br>
+    <input style="font-size: 30px; padding:20px; margin:20px; border-radius:5px;" id="desc" type="text" placeholder="Description"><br>
+    <button style="font-size: 20px; background-color: olive; color: darkkhaki; border-radius: 10px; text-align: center; padding:10px; margin:20px;" onclick="addtodo()" type="button">Add To-Do</button><br>
+    <div id="container">
+        <!-- ToDo items will be added here -->
+    </div>
+</div>
+</div>
+<div style="color:peru; text-align: center; background-color: black; padding:30px"><h2>Thank You for using our services! </h2></div>
